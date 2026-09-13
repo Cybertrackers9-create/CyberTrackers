@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cyber Trackers</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🛡️
+        </div>
+
+        <div>
+            <h2>Cyber Trackers</h2>
+            <span>AI SECURITY</span>
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <button class="nav-item active"
+                onclick="showSection('dashboard')">
+            🏠 Dashboard
+        </button>
+
+        <button class="nav-item"
+                onclick="showSection('email')">
+            📧 Email Analyzer
+        </button>
+
+        <button class="nav-item"
+                onclick="showSection('url')">
+            🔗 URL Scanner
+        </button>
+
+        <button class="nav-item"
+                onclick="showSection('threats')">
+            🚨 Threat Center
+        </button>
+
+        <button class="nav-item"
+                onclick="showSection('honeypot')">
+            🍯 Honeypot
+        </button>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+        Cyber Trackers v1.0
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="main">
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div>
+
+            <p class="small-title">
+                CYBERSECURITY COMMAND CENTER
+            </p>
+
+            <h1>
+                Welcome to Cyber Trackers
+            </h1>
+
+            <p class="subtitle">
+                AI-powered email and threat analysis
+            </p>
+
+        </div>
+
+
+        <div class="status">
+
+            <span class="status-dot"></span>
+
+            System Online
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <section id="dashboard"
+             class="section active-section">
+
+        <div class="hero">
+
+            <div>
+
+                <span class="badge">
+                    AI SECURITY PLATFORM
+                </span>
+
+                <h2>
+                    Detect threats before
+                    they reach you.
+                </h2>
+
+                <p>
+                    Analyze suspicious emails and URLs
+                    using intelligent cybersecurity analysis.
+                </p>
+
+                <button class="primary-btn"
+                        onclick="showSection('email')">
+
+                    Analyze an Email →
+
+                </button>
+
+            </div>
+
+
+            <div class="shield">
+                🛡️
+            </div>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <!-- EMAIL CARD -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📧
+                </div>
+
+                <h3>
+                    Email Analysis
+                </h3>
+
+                <p>
+                    Detect phishing indicators,
+                    suspicious language and malicious links.
+                </p>
+
+                <button onclick="showSection('email')">
+                    Open Analyzer →
+                </button>
+
+            </div>
+
+
+            <!-- URL CARD -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🔗
+                </div>
+
+                <h3>
+                    URL Scanner
+                </h3>
+
+                <p>
+                    Inspect suspicious URLs
+                    and identify risky patterns.
+                </p>
+
+                <button onclick="showSection('url')">
+                    Scan URL →
+                </button>
+
+            </div>
+
+
+            <!-- HONEYPOT CARD -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🍯
+                </div>
+
+                <h3>
+                    Honeypot
+                </h3>
+
+                <p>
+                    Monitor simulated malicious
+                    activity in a controlled environment.
+                </p>
+
+                <button onclick="showSection('honeypot')">
+                    View Honeypot →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EMAIL ANALYZER ================= -->
+
+    <section id="email"
+             class="section">
+
+        <div class="section-title">
+
+            <span class="badge">
+                EMAIL SECURITY
+            </span>
+
+            <h2>
+                Email Threat Analyzer
+            </h2>
+
+            <p>
+                Paste an email below and analyze it
+                for potential phishing and security threats.
+            </p>
+
+        </div>
+
+
+        <div class="analyzer-box">
+
+            <textarea
+                id="emailInput"
+                placeholder="Paste suspicious email content here...">
+            </textarea>
+
+
+            <button class="primary-btn"
+                    onclick="analyzeEmail()">
+
+                🔍 Analyze Email
+
+            </button>
+
+        </div>
+
+
+        <div id="emailResult"
+             class="result hidden">
+        </div>
+
+    </section>
+
+
+    <!-- ================= URL SCANNER ================= -->
+
+    <section id="url"
+             class="section">
+
+        <div class="section-title">
+
+            <span class="badge">
+                URL SECURITY
+            </span>
+
+            <h2>
+                URL Scanner
+            </h2>
+
+            <p>
+                Check a suspicious URL for risky characteristics.
+            </p>
+
+        </div>
+
+
+        <div class="url-box">
+
+            <input
+                id="urlInput"
+                type="text"
+                placeholder="https://example.com">
+
+
+            <button class="primary-btn"
+                    onclick="checkURL()">
+
+                🔍 Scan URL
+
+            </button>
+
+        </div>
+
+
+        <div id="urlResult"
+             class="result hidden">
+        </div>
+
+    </section>
+
+
+    <!-- ================= THREAT CENTER ================= -->
+
+    <section id="threats"
+             class="section">
+
+        <div class="section-title">
+
+            <span class="badge">
+                THREAT CENTER
+            </span>
+
+            <h2>
+                Threat Intelligence
+            </h2>
+
+            <p>
+                Security monitoring and threat information.
+            </p>
+
+        </div>
+
+
+        <div class="threat-grid">
+
+
+            <div class="threat-card">
+
+                <span class="threat-number">
+                    0
+                </span>
+
+                <p>
+                    Active Threats
+                </p>
+
+            </div>
+
+
+            <div class="threat-card">
+
+                <span class="threat-number">
+                    0
+                </span>
+
+                <p>
+                    Blocked URLs
+                </p>
+
+            </div>
+
+
+            <div class="threat-card">
+
+                <span class="threat-number">
+                    0
+                </span>
+
+                <p>
+                    Phishing Attempts
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= HONEYPOT ================= -->
+
+    <section id="honeypot"
+             class="section">
+
+        <div class="section-title">
+
+            <span class="badge">
+                HONEYPOT
+            </span>
+
+            <h2>
+                Honeypot Monitoring
+            </h2>
+
+            <p>
+                Controlled environment for observing
+                simulated suspicious activity.
+            </p>
+
+        </div>
+
+
+        <div class="honeypot-box">
+
+            <div class="honeypot-icon">
+                🍯
+            </div>
+
+            <h3>
+                Honeypot Active
+            </h3>
+
+            <p>
+                Monitoring simulated security events...
+            </p>
+
+            <span class="live">
+                ● LIVE MONITORING
+            </span>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="{{ url_for('static', filename='script.js') }}">
+</script>
+
+</body>
+
+</html>
